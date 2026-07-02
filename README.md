@@ -25,11 +25,19 @@ git clone https://github.com/adilsongcostadev-cmd/exercicios-estatistica-m1s12.g
 pip install matplotlib
 ```
 
-3. Entre na pasta do exercício desejado e execute o script:
+3. Entre na pasta do exercício desejado e execute o script correspondente:
+
+**Exercício 01 — Box Plot:**
 
 ```bash
 cd 01-boxplot
 python exercicio_boxplot.py
+```
+**Exercício 02 — Média, Moda e Mediana:**
+
+```bash
+cd 02-media-moda-mediana
+python exercicio_media_moda_mediana.py
 ```
 
 ## 🛠️ Tecnologias
