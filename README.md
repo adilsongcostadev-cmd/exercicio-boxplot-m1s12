@@ -9,6 +9,8 @@ Coleção de exercícios resolvidos de **Estatística Aplicada à Análise Predi
 | 01 | Box Plot | Cinco números resumidos, AIQ, limites de discrepância, outliers e construção do box plot | [`01-boxplot/`](./01-boxplot/) |
 | 02 | Média, Moda e Mediana | Dados agrupados em classes: ponto médio, porcentagem acumulada e medidas de posição central | [`02-media-moda-mediana/`](./02-media-moda-mediana/) |
 
+| 03 | Variância e Desvio Padrão | Medidas de dispersão: variância populacional e desvio padrão de 5 grupos com a mesma média | [`03-variancia-desvio-padrao/`](./03-variancia-desvio-padrao/) |
+
 Cada pasta contém o enunciado resumido, a resolução passo a passo em Python e o respectivo README com os resultados e a interpretação.
 
 ## 🚀 Como executar
