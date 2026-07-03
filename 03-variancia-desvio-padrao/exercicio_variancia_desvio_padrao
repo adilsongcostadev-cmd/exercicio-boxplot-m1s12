@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+"""
+Atividade Prática — Variância e Desvio Padrão
+Notas obtidas por 5 grupos (A, B, C, D, E), todos com média 5.
+Objetivo: demonstrar que a média sozinha não descreve um conjunto de dados.
+
+Fórmula utilizada: variância POPULACIONAL (divisão por N), conforme a aula.
+
+Para rodar: python exercicio_variancia_desvio_padrao.py
+"""
+
+import math
+
+# ------------------------------------------------------------------
+# Dados dos grupos
+# ------------------------------------------------------------------
+grupos = {
+    "A (Regular/Moderado)":          [3, 4, 5, 6, 7],
+    "B (Extremo/Disperso)":          [1, 3, 5, 7, 9],
+    "C (Perfeitamente Homogêneo)":   [5, 5, 5, 5, 5],
+    "D (Concentrado no Centro)":     [3, 5, 5, 7],
+    "E (Assimétrico)":               [3, 5, 5, 6, 6],
+}
+
+print("=" * 78)
+print("VARIÂNCIA E DESVIO PADRÃO — Notas dos 5 grupos")
+print("=" * 78)
+
+resultados = {}
+
+for nome, notas in grupos.items():
+    n = len(notas)
+    media = sum(notas) / n
+
+    # Passo 1: desvios em relação à média
+    desvios = [x - media for x in notas]
+
+    # Passo 2: desvios ao quadrado (resolve o 'paradoxo' da soma zero)
+    desvios_quad = [d ** 2 for d in desvios]
+    soma_quad = sum(desvios_quad)
+
+    # Passo 3: variância populacional (média dos quadrados)
+    variancia = soma_quad / n
+
+    # Passo 4: desvio padrão (raiz da variância)
+    desvio_padrao = math.sqrt(variancia)
+
+    resultados[nome] = (media, variancia, desvio_padrao)
+
+    print(f"\nGRUPO {nome}")
+    print(f"  Notas: {notas}  (n = {n})")
+    print(f"  Média: {media:g}")
+    print(f"  Desvios (xi - média): {[f'{d:+g}' for d in desvios]}")
+    print(f"  Soma dos desvios: {sum(desvios):g}  <- sempre zero (o 'paradoxo')")
+    print(f"  Desvios ao quadrado: {[f'{q:g}' for q in desvios_quad]}")
+    print(f"  Soma dos quadrados: {soma_quad:g}")
+    print(f"  Variância  = {soma_quad:g} / {n} = {variancia:g}")
+    print(f"  Desvio Padrão = raiz({variancia:g}) = {desvio_padrao:.2f}")
+
+# ------------------------------------------------------------------
+# Tabela-resumo
+# ------------------------------------------------------------------
+print("\n" + "=" * 78)
+print("TABELA-RESUMO")
+print("=" * 78)
+print(f"{'Grupo':<32}{'Média':>8}{'Variância':>12}{'Desvio Padrão':>16}")
+for nome, (media, var, dp) in resultados.items():
+    print(f"{nome:<32}{media:>8g}{var:>12g}{dp:>16.2f}")
+
+# ------------------------------------------------------------------
+# Interpretação
+# ------------------------------------------------------------------
+print("\n" + "=" * 78)
+print("INTERPRETAÇÃO")
+print("=" * 78)
+print("Todos os grupos têm MÉDIA 5, mas dispersões muito diferentes:")
+print("  - C (dp = 0): perfeitamente homogêneo, todas as notas iguais.")
+print("  - B (dp = 2.83): o mais disperso, notas espalhadas de 1 a 9.")
+print("  - A e D (dp = 1.41): mesma dispersão com configurações diferentes.")
+print("  - E (dp = 1.10): o menos disperso entre os heterogêneos.")
+print("Ranking de homogeneidade: C > E > A = D > B")
+print("\nConclusão: a média sozinha não descreve os dados — é indispensável")
+print("acompanhá-la de uma medida de dispersão.")
